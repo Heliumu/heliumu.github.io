@@ -1,0 +1,8 @@
+# Cloudflare Pages Redirects Configuration
+
+# 根路径重定向到英文首页
+# /  /en  302
+
+# 确保404页面正常工作
+/*  /404.html  404
+

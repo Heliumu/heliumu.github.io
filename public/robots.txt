@@ -1,0 +1,19 @@
+# Robots.txt for AiTrados API Explorer
+# https://api.aitrados.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://api.aitrados.com/sitemap.xml
+
+# 允许所有搜索引擎爬取所有页面
+# Allow all search engines to crawl all pages
+
+# 爬取延迟（可选）
+# Crawl-delay: 1
+
+# 禁止爬取的路径（如果需要）
+# Disallow: /_next/
+# Disallow: /api/
+

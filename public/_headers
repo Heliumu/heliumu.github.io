@@ -1,0 +1,22 @@
+# Headers Configuration for Cloudflare Pages
+
+# 安全头部
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# 静态资源缓存（图片）
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Next.js静态资源缓存
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML页面缓存（1小时，需要重新验证）
+/*.html
+  Cache-Control: public, max-age=3600, must-revalidate
+

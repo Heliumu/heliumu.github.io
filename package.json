@@ -1,0 +1,32 @@
+{
+  "name": "aitrados---financial-data-api-explorer",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "dev:ssr": "echo '⚠️  SSR模式: 请手动修改 pages/[...slug].tsx' && next dev",
+    "build": "next build && npm run postbuild",
+    "postbuild": "shx cp public/_headers out/_headers || exit 0",
+    "build:ssr": "echo '⚠️  SSR模式: 请先修改 pages/[...slug].tsx 切换到 SSR' && next build",
+    "start": "next start",
+    "build:copylangs": "npm run build && node scripts/copy-langs.cjs.unused",
+    "api:sync": "node scripts/generate-api-config.js",
+    "sitemap": "node scripts/generate-sitemap.cjs",
+    "export": "next export --outdir out"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "next": "^16.1.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.2.3",
+    "dotenv": "^17.2.3",
+    "shx": "^0.4.0",
+    "typescript": "~5.8.2"
+  }
+}

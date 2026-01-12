@@ -1,0 +1,5 @@
+{
+  "name": "aitrados - Financial Data API Explorer",
+  "description": "A modern landing page and interactive API explorer for aitrados, providing seamless access to stock, economic, and news data via high-performance REST APIs.",
+  "requestFramePermissions": []
+}

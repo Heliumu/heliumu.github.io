@@ -1,0 +1,39 @@
+//"prebuild": "node scripts/generate-sitemap.cjs",
+const fs = require('fs');
+const path = require('path');
+
+const DIST = path.resolve(__dirname, '../dist');
+const LANGS = ['en','zh_cn','zh','ja','ko','de','fr'];
+
+function copyIndexForLangs() {
+  const indexPath = path.join(DIST, 'index.html');
+  if (!fs.existsSync(indexPath)) {
+    console.error('dist/index.html not found. Please run build first.');
+    process.exit(1);
+  }
+
+  const html = fs.readFileSync(indexPath, 'utf8');
+
+  LANGS.forEach(lang => {
+    const dir = path.join(DIST, lang);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const target = path.join(dir, 'index.html');
+    fs.writeFileSync(target, html, 'utf8');
+    console.log(`Wrote ${target}`);
+  });
+}
+
+function generateSitemap() {
+  const base = process.env.SITE_BASE || 'https://example.com';
+  const urls = LANGS.map(lang => `${base}/${lang}/`);
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    urls.map(u => `  <url>\n    <loc>${u}</loc>\n  </url>`).join('\n') +
+    `\n</urlset>`;
+  fs.writeFileSync(path.join(DIST, 'sitemap.xml'), sitemap, 'utf8');
+  console.log('Wrote sitemap.xml');
+}
+
+copyIndexForLangs();
+generateSitemap();
+
