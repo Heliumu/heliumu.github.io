@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
+  distDir: '.next',
   trailingSlash: true,
   images: {
     unoptimized: true, // 静态导出需要禁用图片优化
